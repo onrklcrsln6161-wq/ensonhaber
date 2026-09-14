@@ -1,0 +1,28 @@
+name: PHP checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: php:8.4-cli
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install test extensions
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends libonig-dev libsqlite3-dev
+          docker-php-ext-install mbstring pdo_sqlite
+      - name: Prepare configuration
+        run: cp config/config.example.php config/config.php
+      - name: PHP syntax
+        run: find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l
+      - name: Regression tests
+        run: |
+          set -eu
+          for test in permissions security publishing editorial feeds ai; do
+            php "tests/$test.php"
+          done
