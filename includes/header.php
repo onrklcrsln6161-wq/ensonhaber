@@ -41,9 +41,9 @@ $__shareImage = $__pageImage ?? image_url($__logo ?: null);
 <meta name="twitter:image" content="<?= e($__shareImage) ?>">
 <link rel="alternate" type="application/rss+xml" title="<?= e($__siteName) ?> RSS" href="<?= e(BASE_URL) ?>/rss.php">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="<?= e(BASE_URL) ?>/assets/css/style.css">
+<link rel="stylesheet" href="<?= e(BASE_URL) ?>/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../assets/css/style.css') ?>">
 </head>
-<body>
+<body<?= ($__ogType ?? '') === 'article' ? ' class="reading-page"' : '' ?>>
 
 <div class="topbar">
     <div class="container">
@@ -64,7 +64,7 @@ $__shareImage = $__pageImage ?? image_url($__logo ?: null);
     <div class="container">
         <?php if ($__marketLive): ?><span class="live-badge" title="Kurlar otomatik güncelleniyor">● CANLI</span><?php endif; ?>
         <div class="track">
-            <?php for ($i = 0; $i < 2; $i++): // iki kez basip kesintisiz kaydirma efekti ?>
+            <?php for ($i = 0; $i < (($__ogType ?? '') === 'article' ? 1 : 2); $i++): // iki kez basip kesintisiz kaydirma efekti ?>
                 <?php foreach ($__ticker as $t): ?>
                     <div class="market-item">
                         <span class="label"><?= e($t['label']) ?></span>
@@ -114,7 +114,7 @@ $__shareImage = $__pageImage ?? image_url($__logo ?: null);
     <span class="badge"><i class="bi bi-broadcast"></i> SON DAKİKA</span>
     <div class="scroller">
         <div class="scroller-track">
-            <?php for ($i = 0; $i < 2; $i++): ?>
+            <?php for ($i = 0; $i < (($__ogType ?? '') === 'article' ? 1 : 2); $i++): ?>
                 <?php foreach ($__breaking as $b): ?>
                     <a href="<?= e(news_url($b)) ?>"><?= e($b['title']) ?></a>
                 <?php endforeach; ?>
