@@ -1,0 +1,17 @@
+ErrorDocument 404 /404.php
+
+# Temel guvenlik basliklari
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# .sql, .log, .md gibi hassas dosyalara dogrudan web erisimini engelle
+<FilesMatch "\.(sql|sqlite|sqlite3|log|md|ini|bak|lock|env)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,15 @@
+/config/*.sqlite*
+/config/*.log
+/config/backups/
+.env
+/config/*.xml
+/config/*.lock
+
+# Local configuration and uploaded media
+/config/config.php
+.env.*
+!.env.example
+/uploads/**
+!/uploads/logo/
+!/uploads/logo/default-logo.svg
+!/uploads/.htaccess

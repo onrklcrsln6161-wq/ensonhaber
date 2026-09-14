@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cron/
+Disallow: /uploads/media/
+
+Sitemap: https://bilsenneoldu.com.tr/sitemap.php
