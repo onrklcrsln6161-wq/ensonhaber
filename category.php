@@ -35,6 +35,7 @@ $items = $stmt->fetchAll();
 $__pageTitle = $category['name'] . ' Haberleri - ' . get_setting('site_name');
 require __DIR__ . '/includes/header.php';
 ?>
+<main class="container listing-page">
 
 <div class="breadcrumb" style="margin-top:16px;">
     <a href="<?= e(BASE_URL) ?>/index.php">Ana Sayfa</a> / <?= e($category['name']) ?>
@@ -60,4 +61,5 @@ require __DIR__ . '/includes/header.php';
 </div>
 <?php endif; ?>
 
+</main>
 <?php require __DIR__ . '/includes/footer.php'; ?>

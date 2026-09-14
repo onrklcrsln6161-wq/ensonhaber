@@ -418,3 +418,13 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .publication-links{display:flex;flex-wrap:wrap;gap:12px 24px;border-top:1px solid #ffffff22;padding-top:20px;margin-top:24px}
 .publication-page{padding-top:28px;padding-bottom:28px;min-height:40vh;overflow-wrap:anywhere}
 .publication-page h1{margin-bottom:24px}
+
+/* Shared full-width, centered public-page layout. */
+:root { --page-gutter: clamp(16px, 2.5vw, 48px); }
+body { width:100%; max-width:none; margin:0; }
+.container, .page-layout, .home-layout { width:100%; max-width:none; margin-left:auto; margin-right:auto; padding-left:var(--page-gutter); padding-right:var(--page-gutter); }
+.page-layout { grid-template-columns:minmax(0, 2fr) minmax(280px, 1fr); }
+.listing-page { padding-top:24px; padding-bottom:24px; min-height:45vh; }
+.page-layout article, .listing-page, .publication-page { min-width:0; overflow-wrap:anywhere; }
+@media(min-width:1440px){ .listing-page .news-grid,.publication-page .news-grid{grid-template-columns:repeat(4,minmax(0,1fr));} }
+@media(max-width:860px){ .page-layout,.home-layout{grid-template-columns:minmax(0,1fr);} }

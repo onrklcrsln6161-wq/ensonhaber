@@ -29,6 +29,7 @@ if ($q !== '') {
 $__pageTitle = 'Arama: ' . $q . ' - ' . get_setting('site_name');
 require __DIR__ . '/includes/header.php';
 ?>
+<main class="container listing-page">
 
 <h1 class="section-title">"<?= e($q) ?>" için arama sonuçları (<?= $total ?>)</h1>
 
@@ -51,4 +52,5 @@ require __DIR__ . '/includes/header.php';
 </div>
 <?php endif; ?>
 
+</main>
 <?php require __DIR__ . '/includes/footer.php'; ?>
